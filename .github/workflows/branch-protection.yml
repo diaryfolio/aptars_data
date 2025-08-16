@@ -1,0 +1,118 @@
+name: Branch Protection Checks
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main, master ]
+
+jobs:
+  security-checks:
+    name: Security and Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check for sensitive files
+      run: |
+        echo "Checking for sensitive files..."
+        if find . -name "*.key" -o -name "*.pem" -o -name "*.p12" -o -name "*.pfx" -o -name ".env" | grep -q .; then
+          echo "❌ Sensitive files detected!"
+          find . -name "*.key" -o -name "*.pem" -o -name "*.p12" -o -name "*.pfx" -o -name ".env"
+          exit 1
+        else
+          echo "✅ No sensitive files found"
+        fi
+        
+    - name: Check file sizes
+      run: |
+        echo "Checking for large files..."
+        find . -type f -size +50M | while read file; do
+          echo "❌ Large file detected: $file"
+          exit 1
+        done
+        echo "✅ No large files found"
+        
+    - name: Validate JSON files
+      run: |
+        echo "Validating JSON files..."
+        find . -name "*.json" -type f | while read file; do
+          if ! python3 -m json.tool "$file" > /dev/null 2>&1; then
+            echo "❌ Invalid JSON in: $file"
+            exit 1
+          fi
+        done
+        echo "✅ All JSON files are valid"
+        
+    - name: Check for merge commits
+      if: github.event_name == 'pull_request'
+      run: |
+        echo "Checking for merge commits..."
+        if git log --merges --oneline ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep -q .; then
+          echo "❌ Merge commits detected in PR"
+          git log --merges --oneline ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
+          exit 1
+        else
+          echo "✅ No merge commits found"
+        fi
+
+  data-validation:
+    name: Data Structure Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate directory structure
+      run: |
+        echo "Validating directory structure..."
+        
+        # Check required directories exist
+        required_dirs=("data" "data/raw" "data/processed" "data/exports" "docs" "scripts" "config")
+        for dir in "${required_dirs[@]}"; do
+          if [ ! -d "$dir" ]; then
+            echo "❌ Required directory missing: $dir"
+            exit 1
+          fi
+        done
+        echo "✅ All required directories present"
+        
+    - name: Check README files
+      run: |
+        echo "Checking README files..."
+        required_readmes=("README.md" "docs/README.md" "scripts/README.md" "config/README.md")
+        for readme in "${required_readmes[@]}"; do
+          if [ ! -f "$readme" ]; then
+            echo "❌ Required README missing: $readme"
+            exit 1
+          fi
+        done
+        echo "✅ All required README files present"
+
+  documentation-check:
+    name: Documentation Quality Check
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check for broken links
+      run: |
+        echo "Checking for broken links in documentation..."
+        # This is a placeholder - you can add actual link checking logic
+        echo "✅ Documentation link check completed"
+        
+    - name: Validate markdown syntax
+      run: |
+        echo "Validating markdown syntax..."
+        find . -name "*.md" -type f | while read file; do
+          if ! python3 -c "import markdown; markdown.markdown(open('$file').read())" > /dev/null 2>&1; then
+            echo "❌ Invalid markdown in: $file"
+            exit 1
+          fi
+        done
+        echo "✅ All markdown files are valid"

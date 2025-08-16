@@ -1,0 +1,118 @@
+# GitHub Branch Protection Ruleset
+# This ruleset ensures that no one can write directly to the main branch
+# and all changes must go through pull requests
+
+name: "Main Branch Protection Ruleset"
+description: "Protects the main branch from direct writes and enforces pull request workflow"
+enforcement: "active"  # Options: "active", "disabled", "evaluate"
+
+# Target branches for this ruleset
+targets:
+  branches:
+    - "main"
+    - "master"
+
+# Rules configuration
+rules:
+  # Require pull request reviews before merging
+  - name: "Require pull request reviews before merging"
+    parameters:
+      required_approving_review_count: 1
+      dismiss_stale_reviews_on_push: true
+      require_code_owner_reviews: false
+      require_last_push_approval: false
+
+  # Require status checks to pass before merging
+  - name: "Require status checks to pass before merging"
+    parameters:
+      required_status_checks:
+        strict: true
+        contexts: []
+      require_branches_to_be_up_to_date: true
+
+  # Require conversation resolution before merging
+  - name: "Require conversation resolution before merging"
+    parameters:
+      require_conversation_resolution: true
+
+  # Require signed commits
+  - name: "Require signed commits"
+    parameters:
+      required_signatures: true
+
+  # Require linear history
+  - name: "Require linear history"
+    parameters:
+      required_linear_history: true
+
+  # Require deployments to succeed before merging
+  - name: "Require deployments to succeed before merging"
+    parameters:
+      required_deployment_environments: []
+
+  # Lock branch
+  - name: "Lock branch"
+    parameters:
+      lock_branch: true
+
+  # Require a pull request before merging
+  - name: "Require a pull request before merging"
+    parameters:
+      require_pull_request: true
+      required_approving_review_count: 1
+      dismiss_stale_reviews_on_push: true
+      require_code_owner_reviews: false
+      require_last_push_approval: false
+
+  # Restrict pushes that create files that match the specified glob pattern
+  - name: "Restrict file creation"
+    parameters:
+      file_patterns:
+        - "*.key"
+        - "*.pem"
+        - "*.p12"
+        - "*.pfx"
+        - "secrets/"
+        - "keys/"
+        - ".env"
+        - "config/local/"
+
+  # Restrict pushes that delete files
+  - name: "Restrict file deletion"
+    parameters:
+      restrict_deletions: true
+
+  # Restrict force pushes
+  - name: "Restrict force pushes"
+    parameters:
+      restrict_force_pushes: true
+
+  # Restrict pushes that update files
+  - name: "Restrict file updates"
+    parameters:
+      restrict_updates: false  # Allow updates through PRs
+
+# Bypass settings (only for repository owners)
+bypass_settings:
+  - name: "Repository owners can bypass"
+    parameters:
+      bypass_mode: "always"
+      actor_ids: []  # Will be populated with owner IDs
+
+# Conditions for when this ruleset applies
+conditions:
+  ref_name:
+    include:
+      - "refs/heads/main"
+      - "refs/heads/master"
+    exclude:
+      - "refs/heads/develop"
+      - "refs/heads/feature/*"
+      - "refs/heads/hotfix/*"
+
+# Metadata
+metadata:
+  created_by: "Repository Owner"
+  created_at: "2024-08-16"
+  version: "1.0"
+  description: "Main branch protection with mandatory pull requests"

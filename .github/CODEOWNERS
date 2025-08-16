@@ -1,0 +1,35 @@
+# Global repository owners
+# These users will be requested for review on all pull requests
+* @diaryfolio
+
+# Data-specific owners
+# Users responsible for data quality and integrity
+data/ @diaryfolio
+data/raw/ @diaryfolio
+data/processed/ @diaryfolio
+data/exports/ @diaryfolio
+
+# Scripts and automation
+# Users responsible for data processing scripts
+scripts/ @diaryfolio
+
+# Documentation
+# Users responsible for maintaining documentation
+docs/ @diaryfolio
+README.md @diaryfolio
+
+# Configuration files
+# Users responsible for repository configuration
+config/ @diaryfolio
+.github/ @diaryfolio
+github/ @diaryfolio
+
+# Security and sensitive files
+# Only repository owners can modify these
+.gitignore @diaryfolio
+.github/CODEOWNERS @diaryfolio
+github/rules/ @diaryfolio
+
+# Note: Replace @diaryfolio with actual GitHub usernames
+# You can add multiple users separated by spaces
+# Example: data/ @user1 @user2 @user3
