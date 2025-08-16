@@ -1,4 +1,4 @@
-id: 'apt_lazarus_group'
+id: 'lazarus_group'
 name: 'Lazarus Group'
 aliases: ['Hidden Cobra', 'Guardians of Peace', 'APT38', 'BlueNoroff', 'Andariel']
 overview: 'Lazarus Group is a North Korean state-sponsored threat actor known for sophisticated cyber attacks including financial theft, espionage, and destructive operations. They are associated with the Reconnaissance General Bureau (RGB).'

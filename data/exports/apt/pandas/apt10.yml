@@ -1,4 +1,4 @@
-id: 'apt_apt10'
+id: 'apt10'
 name: 'APT10'
 aliases: ['Stone Panda', 'Red Apollo', 'CVNX', 'MenuPass', 'Cloud Hopper']
 overview: 'APT10 is a Chinese state-sponsored threat actor known for cyber espionage campaigns targeting managed service providers (MSPs) and their clients. They are associated with the Chinese Ministry of State Security (MSS).'
