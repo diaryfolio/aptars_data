@@ -7,11 +7,4 @@ threatIntelLinks:
     url: 'https://www.crowdstrike.com/blog/fancy-bear-apt28/'
   - name: 'FireEye: APT28'
     url: 'https://www.fireeye.com/blog/threat-research/2014/10/apt28-and-apt29.html'
-icon: |
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-    <path d="M12 10v1.5c0 .828.672 1.5 1.5 1.5H15" />
-    <path d="M18.36 18.36A9 9 0 1 1 5.64 5.64" />
-    <path d="M12 16c-3.5 0-6 1.5-6 3" />
-    <path d="M18 19c0-1.5-2.5-3-6-3" />
-  </svg>
+icon: '/icons/apt28.svg'
