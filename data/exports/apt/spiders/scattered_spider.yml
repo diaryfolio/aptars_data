@@ -1,0 +1,7 @@
+id: 'apt_scattered_spider'
+name: 'Scattered Spider'
+aliases: ['UNC3944']
+overview: 'Scattered Spider is a financially motivated threat actor known for targeting telecommunications, BPO, and technology companies. They are skilled in social engineering and SIM swapping attacks.'
+threatIntelLinks:
+  - name: 'CrowdStrike: Scattered Spider'
+    url: 'https://www.crowdstrike.com/blog/scattered-spider-attempts-to-avoid-detection-in-recent-incidents/'
