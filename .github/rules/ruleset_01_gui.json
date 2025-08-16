@@ -1,0 +1,74 @@
+{
+  "name": "Main Branch Protection",
+  "description": "Protects main branch with pull request requirements and security rules",
+  "enforcement": "active",
+  "targets": {
+    "branches": ["main"]
+  },
+  "rules": [
+    {
+      "name": "Require a pull request before merging",
+      "parameters": {
+        "require_pull_request": true,
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+        "require_code_owner_reviews": true
+      }
+    },
+    {
+      "name": "Require status checks to pass before merging",
+      "parameters": {
+        "required_status_checks": {
+          "strict": true,
+          "contexts": ["Branch Protection Checks"]
+        },
+        "require_branches_to_be_up_to_date": true
+      }
+    },
+    {
+      "name": "Require conversation resolution before merging",
+      "parameters": {
+        "require_conversation_resolution": true
+      }
+    },
+    {
+      "name": "Require signed commits",
+      "parameters": {
+        "required_signatures": true
+      }
+    },
+    {
+      "name": "Require linear history",
+      "parameters": {
+        "required_linear_history": true
+      }
+    },
+    {
+      "name": "Restrict pushes that create files that match the specified glob pattern",
+      "parameters": {
+        "file_patterns": [
+          "*.key",
+          "*.pem", 
+          "*.p12",
+          "*.pfx",
+          "secrets/",
+          "keys/",
+          ".env",
+          "config/local/"
+        ]
+      }
+    },
+    {
+      "name": "Restrict pushes that delete files",
+      "parameters": {
+        "restrict_deletions": true
+      }
+    },
+    {
+      "name": "Restrict force pushes",
+      "parameters": {
+        "restrict_force_pushes": true
+      }
+    }
+  ]
+}

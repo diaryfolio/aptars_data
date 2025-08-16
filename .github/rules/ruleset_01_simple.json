@@ -1,0 +1,28 @@
+{
+  "name": "Main Branch Protection",
+  "description": "Protects main branch",
+  "enforcement": "active",
+  "targets": {
+    "branches": ["main"]
+  },
+  "rules": [
+    {
+      "name": "Require a pull request before merging"
+    },
+    {
+      "name": "Require status checks to pass before merging"
+    },
+    {
+      "name": "Require conversation resolution before merging"
+    },
+    {
+      "name": "Require signed commits"
+    },
+    {
+      "name": "Require linear history"
+    },
+    {
+      "name": "Restrict force pushes"
+    }
+  ]
+}
