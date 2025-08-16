@@ -1,14 +1,17 @@
 # GitHub Configuration
 
-This directory contains GitHub-specific configuration files and rules for the Aptars data repository.
+This directory contains GitHub-specific configuration files for the Aptars data repository.
 
 ## Directory Structure
 
 ```
-github/
-├── README.md              # This file
+.github/
+├── README.md                    # This file
+├── CODEOWNERS                   # Automatic reviewer assignment
+├── workflows/
+│   └── branch-protection.yml    # Automated checks workflow
 └── rules/
-    └── ruleset_01.yml     # Main branch protection ruleset
+    └── ruleset_01.yml          # Branch protection ruleset
 ```
 
 ## Branch Protection Rules
@@ -77,9 +80,9 @@ keys/
 config/local/
 ```
 
-### 3. Set Up CODEOWNERS (Optional):
+### 3. Set Up CODEOWNERS:
 
-Create a `.github/CODEOWNERS` file to automatically request reviews from specific team members:
+The CODEOWNERS file automatically requests reviews from specific team members:
 
 ```
 # Global owners
@@ -90,6 +93,27 @@ data/ @data-team
 scripts/ @dev-team
 docs/ @tech-writers
 ```
+
+## GitHub Actions Workflow
+
+### branch-protection.yml
+
+This workflow runs automated checks on pull requests and pushes to main:
+
+#### **Security Checks:**
+- Detects sensitive files (`.env`, `*.key`, etc.)
+- Checks for large files (>50MB)
+- Validates JSON syntax
+- Prevents merge commits in PRs
+
+#### **Data Validation:**
+- Ensures required directory structure exists
+- Validates README files are present
+- Checks documentation quality
+
+#### **Documentation Quality:**
+- Validates markdown syntax
+- Checks for broken links (placeholder)
 
 ## Benefits
 
