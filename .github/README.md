@@ -11,14 +11,14 @@ This directory contains GitHub-specific configuration files for the Aptars data 
 ├── workflows/
 │   └── branch-protection.yml    # Automated checks workflow
 └── rules/
-    └── ruleset_01.yml          # Branch protection ruleset
+    └── manual_setup_guide.md    # Branch protection setup guide
 ```
 
 ## Branch Protection Rules
 
-### ruleset_01.yml
+### manual_setup_guide.md
 
-This ruleset implements comprehensive branch protection for the main branch with the following features:
+This guide provides step-by-step instructions for implementing comprehensive branch protection for the main branch with the following features:
 
 #### 🔒 **Core Protection Rules:**
 
@@ -42,7 +42,7 @@ This ruleset implements comprehensive branch protection for the main branch with
 
 ## Implementation Instructions
 
-### 1. Apply Ruleset via GitHub UI:
+### 1. Apply Branch Protection via GitHub UI:
 
 1. Go to your repository on GitHub
 2. Navigate to **Settings** → **Branches**
