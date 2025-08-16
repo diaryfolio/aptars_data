@@ -1,0 +1,9 @@
+id: 'apt_apt35'
+name: 'APT35'
+aliases: ['Charming Kitten', 'Newscaster', 'Phosphorus', 'Ajax Security Team']
+overview: 'APT35 is an Iranian state-sponsored threat actor known for cyber espionage campaigns targeting government, military, and media organizations. They are associated with the Islamic Revolutionary Guard Corps (IRGC).'
+threatIntelLinks:
+  - name: 'FireEye: APT35'
+    url: 'https://www.fireeye.com/blog/threat-research/2017/09/apt35-iranian-cyber-espionage.html'
+  - name: 'CrowdStrike: Charming Kitten'
+    url: 'https://www.crowdstrike.com/blog/charming-kitten-apt35/'

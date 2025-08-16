@@ -1,0 +1,9 @@
+id: 'apt_lazarus_group'
+name: 'Lazarus Group'
+aliases: ['Hidden Cobra', 'Guardians of Peace', 'APT38', 'BlueNoroff', 'Andariel']
+overview: 'Lazarus Group is a North Korean state-sponsored threat actor known for sophisticated cyber attacks including financial theft, espionage, and destructive operations. They are associated with the Reconnaissance General Bureau (RGB).'
+threatIntelLinks:
+  - name: 'CrowdStrike: Lazarus Group'
+    url: 'https://www.crowdstrike.com/blog/lazarus-group/'
+  - name: 'FireEye: APT38'
+    url: 'https://www.fireeye.com/blog/threat-research/2018/10/apt38-un-usdollar-100m-cyber-theft.html'

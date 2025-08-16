@@ -1,0 +1,9 @@
+id: 'apt_apt33'
+name: 'APT33'
+aliases: ['Elfin', 'Refined Kitten', 'Magic Hound', 'Shamoon']
+overview: 'APT33 is an Iranian state-sponsored threat actor known for cyber espionage and destructive attacks targeting energy, aviation, and petrochemical industries. They are associated with the Islamic Revolutionary Guard Corps (IRGC).'
+threatIntelLinks:
+  - name: 'FireEye: APT33'
+    url: 'https://www.fireeye.com/blog/threat-research/2017/09/apt33-insights-into-iranian-cyber-espionage.html'
+  - name: 'CrowdStrike: Elfin'
+    url: 'https://www.crowdstrike.com/blog/elfin-apt33/'

@@ -1,0 +1,9 @@
+id: 'apt_apt29'
+name: 'APT29'
+aliases: ['Cozy Bear', 'CozyDuke', 'The Dukes', 'CozyCar', 'Grizzly Steppe']
+overview: 'APT29 is a Russian state-sponsored threat actor known for sophisticated cyber espionage campaigns targeting government entities, think tanks, and critical infrastructure. They are associated with the Russian Foreign Intelligence Service (SVR).'
+threatIntelLinks:
+  - name: 'CrowdStrike: Cozy Bear'
+    url: 'https://www.crowdstrike.com/blog/cozy-bear-apt29/'
+  - name: 'FireEye: APT29'
+    url: 'https://www.fireeye.com/blog/threat-research/2014/10/apt28-and-apt29.html'
