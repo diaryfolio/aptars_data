@@ -1,0 +1,129 @@
+{
+  "name": "Main Branch Protection Ruleset",
+  "description": "Protects the main branch from direct writes and enforces pull request workflow",
+  "enforcement": "active",
+  "targets": {
+    "branches": [
+      "main",
+      "master"
+    ]
+  },
+  "rules": [
+    {
+      "name": "Require pull request reviews before merging",
+      "parameters": {
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+        "require_code_owner_reviews": false,
+        "require_last_push_approval": false
+      }
+    },
+    {
+      "name": "Require status checks to pass before merging",
+      "parameters": {
+        "required_status_checks": {
+          "strict": true,
+          "contexts": []
+        },
+        "require_branches_to_be_up_to_date": true
+      }
+    },
+    {
+      "name": "Require conversation resolution before merging",
+      "parameters": {
+        "require_conversation_resolution": true
+      }
+    },
+    {
+      "name": "Require signed commits",
+      "parameters": {
+        "required_signatures": true
+      }
+    },
+    {
+      "name": "Require linear history",
+      "parameters": {
+        "required_linear_history": true
+      }
+    },
+    {
+      "name": "Require deployments to succeed before merging",
+      "parameters": {
+        "required_deployment_environments": []
+      }
+    },
+    {
+      "name": "Lock branch",
+      "parameters": {
+        "lock_branch": true
+      }
+    },
+    {
+      "name": "Require a pull request before merging",
+      "parameters": {
+        "require_pull_request": true,
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+        "require_code_owner_reviews": false,
+        "require_last_push_approval": false
+      }
+    },
+    {
+      "name": "Restrict pushes that create files that match the specified glob pattern",
+      "parameters": {
+        "file_patterns": [
+          "*.key",
+          "*.pem",
+          "*.p12",
+          "*.pfx",
+          "secrets/",
+          "keys/",
+          ".env",
+          "config/local/"
+        ]
+      }
+    },
+    {
+      "name": "Restrict pushes that delete files",
+      "parameters": {
+        "restrict_deletions": true
+      }
+    },
+    {
+      "name": "Restrict force pushes",
+      "parameters": {
+        "restrict_force_pushes": true
+      }
+    },
+    {
+      "name": "Restrict pushes that update files",
+      "parameters": {
+        "restrict_updates": false
+      }
+    }
+  ],
+  "bypass_settings": {
+    "users": [],
+    "teams": [],
+    "apps": []
+  },
+  "conditions": {
+    "ref_name": {
+      "include": [
+        "refs/heads/main",
+        "refs/heads/master"
+      ],
+      "exclude": [
+        "refs/heads/develop",
+        "refs/heads/feature/*",
+        "refs/heads/hotfix/*"
+      ]
+    }
+  },
+  "metadata": {
+    "created_by": "Repository Owner",
+    "created_at": "2024-08-16",
+    "version": "1.0",
+    "description": "Main branch protection with mandatory pull requests"
+  }
+}

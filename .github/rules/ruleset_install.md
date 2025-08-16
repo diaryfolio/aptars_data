@@ -10,19 +10,21 @@ This guide provides step-by-step instructions for implementing the branch protec
 
 ## 🔧 Method 1: GitHub Web Interface (Recommended)
 
-### Step 1: Access Repository Settings
+### Option A: Manual Configuration
+
+#### Step 1: Access Repository Settings
 
 1. Navigate to your GitHub repository: `https://github.com/diaryfolio/aptars_data`
 2. Click on **Settings** tab (near the top of the repository page)
 3. In the left sidebar, click **Branches**
 
-### Step 2: Add Branch Protection Rule
+#### Step 2: Add Branch Protection Rule
 
 1. Click **Add rule** or **Add branch protection rule**
 2. In the **Branch name pattern** field, enter: `main`
 3. Click **Create**
 
-### Step 3: Configure Protection Settings
+#### Step 3: Configure Protection Settings
 
 Based on `ruleset_01.yml`, configure these settings:
 
@@ -55,16 +57,38 @@ Based on `ruleset_01.yml`, configure these settings:
 - **Restrict pushes that delete files** → ✅ Check this
 - **Restrict force pushes** → ✅ Check this
 
-### Step 4: Configure Status Checks
+#### Step 4: Configure Status Checks
 
 In the **Status checks** section:
 - **Require branches to be up to date before merging** → ✅ Check this
 - **Status checks that are required** → Add: `Branch Protection Checks` (from your workflow)
 
-### Step 5: Save the Rule
+#### Step 5: Save the Rule
 
 1. Scroll to the bottom
 2. Click **Create** or **Save changes**
+
+### Option B: JSON Upload (Easiest Method)
+
+#### Step 1: Access Rulesets
+
+1. Navigate to your GitHub repository: `https://github.com/diaryfolio/aptars_data`
+2. Click on **Settings** tab
+3. In the left sidebar, click **Rulesets**
+
+#### Step 2: Upload JSON Ruleset
+
+1. Click **Create ruleset** or **Add ruleset**
+2. Look for the **Upload JSON** option or **Import from file** button
+3. Click **Choose file** and select `ruleset_01.json` from your local repository
+4. Review the imported ruleset configuration
+5. Click **Create ruleset** to apply the rules
+
+#### Step 3: Verify Ruleset
+
+1. The ruleset should now appear in your rulesets list
+2. Check that the enforcement is set to **Active**
+3. Verify that the target branches include `main`
 
 ## 🖥️ Method 2: GitHub CLI (Advanced)
 
@@ -216,7 +240,8 @@ gh pr list --state all
 
 ## 🔗 Related Files
 
-- `ruleset_01.yml` - Ruleset configuration template
+- `ruleset_01.yml` - Ruleset configuration template (YAML format)
+- `ruleset_01.json` - Ruleset configuration template (JSON format for GitHub GUI upload)
 - `.github/CODEOWNERS` - Automatic reviewer assignment
 - `.github/workflows/branch-protection.yml` - Automated checks
 - `.github/README.md` - GitHub configuration documentation
