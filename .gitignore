@@ -234,7 +234,6 @@ $RECYCLE.BIN/
 
 # Data files (common formats)
 *.csv
-*.json
 *.xml
 *.xlsx
 *.xls
@@ -243,6 +242,9 @@ $RECYCLE.BIN/
 *.hdf5
 *.pkl
 *.pickle
+
+# Allow JSON files in .github directory (for rulesets)
+!.github/**/*.json
 
 # Large files (adjust size as needed)
 *.zip
